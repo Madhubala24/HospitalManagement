@@ -1,12 +1,13 @@
 .appointment-details-container {
   margin: 20px;
-
 }
+
 .back-button {
   position: absolute;
   top: 10px;
   left: 10px;
 }
+
 .appointment-table {
   width: 100%;
   border-collapse: collapse;
@@ -22,8 +23,8 @@
 .appointment-table th {
   background-color: #f2f2f2;
 }
-.appointmentview-body {
 
+.appointmentview-body {
   overflow: hidden;
   background-image: url('../../public/background\ image\ for\ details\ form.jpg');
   background-size: cover;
@@ -32,9 +33,9 @@
   height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  
+  align-items: center; 
 }
+
 .appointment-details-container h2 {
   color: rgb(36, 36, 77);
 }

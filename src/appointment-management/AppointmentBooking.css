@@ -37,7 +37,6 @@
   
   select {
     appearance: none;
-    /* background: url('path-to-dropdown-icon.png') no-repeat right center; */ 
     background-size: 20px;
   }
   
@@ -63,8 +62,8 @@
   .submit:hover {
     background-color: #45a049;
   }
-  .appointment-body {
 
+  .appointment-body {
     overflow: hidden;
     background-image: url('../../public/inside\ book.jpg');
     background-size: cover;
@@ -73,6 +72,5 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
-    
+    align-items: center;   
 }

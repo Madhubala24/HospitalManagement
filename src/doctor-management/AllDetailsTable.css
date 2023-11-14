@@ -1,4 +1,3 @@
-
 .register-button {
   position: absolute;
   top: 10px;
@@ -6,6 +5,14 @@
   color: #1a1919;
 }
 
+.register-button a {
+  display: inline-block;
+  padding: 10px 15px;
+  background-color: #28a745; 
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
 .back-button {
   position: absolute;
   top: 10px;
@@ -45,9 +52,10 @@
 
 
 .custom-table {
-  width: 850%;
+  width: 80%;
+  overflow-y: auto; 
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 0%;
 }
 
 .custom-table th {
@@ -80,3 +88,27 @@ position: relative;
   
 }
 
+.custom-table td a {
+  display: inline-block;
+  padding: 5px 10px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.custom-table td a.edit-button {
+  background-color: #007bff;
+}
+
+.custom-table td button.delete-button {
+  background-color: #ff0000;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.custom-table td button.edit-button:hover,
+.custom-table td button.delete-button:hover {
+  opacity: 0.8;
+}
