@@ -37,9 +37,9 @@ export default function AllDetailsTable({ onDelete }) {
     <div className="doctortable-body">
       {/* Button to navigate to registration page */}
       <div className="register-button">
-        <button>
+     
           <Link to="/register">For Register</Link>
-        </button>
+       
       </div>
 
       {/* Back button to navigate back to home */}
