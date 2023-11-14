@@ -8,7 +8,7 @@ import LoginPage from "./login/LoginPage";
 import HomePage from "./ui/HomePage"
 import AppointmentBookingForm from "./appointment-management/AppointmentBookingForm";
 import AppointmentDetails from "./appointment-management/AppointmentDetails";
-
+import MyForm from "./doctor-management/RegisterForm";
 
 function App() {
   const [doctors, setDoctors] = useState([]);
@@ -79,6 +79,7 @@ useEffect(() => {
 
             <Route path="/appointment-details" element={<AppointmentDetails appointments={appointments} doctors={doctors} />} />
             <Route path="/register" element={<RegistrationForm />} />
+            <Route path="/registration" element={<MyForm/>} />
             <Route path="/edit/:index" element={<EditForm />} />
          
             <Route

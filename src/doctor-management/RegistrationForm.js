@@ -1,8 +1,11 @@
 import React, { useState } from "react";
-import "./doctor.css";
+import "./register.css"; // Ensure that this import points to the correct CSS file
 import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
+import { ModalFooter } from "react-bootstrap";
 
 export default function RegistrationForm() {
+  const navigate = useNavigate();
   // Initialize the form data state
   const [showPopup, setShowPopup] = useState(false);
   const [formData, setFormData] = useState({
@@ -25,7 +28,7 @@ export default function RegistrationForm() {
   // Function to handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
-    //store data in localstorage
+    // store data in local storage
     const doctorData = JSON.parse(localStorage.getItem("doctorData") || "[]");
     doctorData.push(formData);
     localStorage.setItem("doctorData", JSON.stringify(doctorData));
@@ -45,15 +48,22 @@ export default function RegistrationForm() {
       emergencyNumber: "",
     });
 
-    //popup
+    // popup
     setTimeout(() => {
       setShowPopup(false);
     }, 5000);
   };
 
+  const backtodoctor = () => {
+    navigate("/doctor-management");
+  };
+
   return (
-    <div className="container">
-      <h1>Doctor Registration Form</h1>
+    <div>
+      <div className="back-button">
+        <button onClick={backtodoctor}> Back </button>
+      </div>
+      <h1> Doctor Registration Form</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-element">
           <label htmlFor="name" className="label">
@@ -71,37 +81,39 @@ export default function RegistrationForm() {
         </div>
 
         <div className="form-element">
-          <label className="radio-label">Gender:</label>
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="gender"
-              value="Male"
-              checked={formData.gender === "Male"}
-              onChange={handleChange}
-            />
-            Male
-          </label>
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="gender"
-              value="Female"
-              checked={formData.gender === "Female"}
-              onChange={handleChange}
-            />
-            Female
-          </label>
-          <label className="radio-label">
-            <input
-              type="radio"
-              name="gender"
-              value="Other"
-              checked={formData.gender === "Other"}
-              onChange={handleChange}
-            />
-            Other
-          </label>
+          <label className="label">Gender:</label>
+          <div className="radio-group">
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="gender"
+                value="Male"
+                checked={formData.gender === "Male"}
+                onChange={handleChange}
+              />
+              Male
+            </label>
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="gender"
+                value="Female"
+                checked={formData.gender === "Female"}
+                onChange={handleChange}
+              />
+              Female
+            </label>
+            <label className="radio-label">
+              <input
+                type="radio"
+                name="gender"
+                value="Other"
+                checked={formData.gender === "Other"}
+                onChange={handleChange}
+              />
+              Other
+            </label>
+          </div>
         </div>
 
         <div className="form-element">
@@ -118,6 +130,7 @@ export default function RegistrationForm() {
             required
           />
         </div>
+
         <div className="form-element">
           <label htmlFor="experience" className="label">
             Experience (in years):
@@ -132,6 +145,7 @@ export default function RegistrationForm() {
             required
           />
         </div>
+
         <div className="form-element">
           <label htmlFor="availability" className="label">
             Availability:
@@ -153,6 +167,7 @@ export default function RegistrationForm() {
             <option value="Sunday">Sunday</option>
           </select>
         </div>
+
         <div className="form-element">
           <label htmlFor="fromTime" className="label">
             From:
@@ -179,6 +194,7 @@ export default function RegistrationForm() {
             required
           />
         </div>
+
         <div className="form-element">
           <label htmlFor="emergencyNumber" className="label">
             Emergency Number:
@@ -193,20 +209,18 @@ export default function RegistrationForm() {
             required
           />
         </div>
+
         <div className="form-element">
           <input type="submit" value="Submit" className="submit-button" />
         </div>
       </form>
+
       <Modal show={showPopup} onHide={() => setShowPopup(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Success</Modal.Title>
         </Modal.Header>
         <Modal.Body>Your submission was successful!</Modal.Body>
-        {/* <Modal.Footer>
-          <Button variant="primary" onClick={() => setShowPopup(false)}>
-            Close
-          </Button>
-        </Modal.Footer> */}
+        <ModalFooter></ModalFooter>
       </Modal>
     </div>
   );

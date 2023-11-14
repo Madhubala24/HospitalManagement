@@ -1,0 +1,97 @@
+
+.home-body {
+  overflow: hidden;
+  background-image: url('../../public/bg.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(0, 90, 128);
+  color: rgb(218, 215, 215);
+  position: relative;
+}
+
+.glitter {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+  z-index: -1;
+}
+
+.center-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+
+.container-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 20px;
+}
+
+.container {
+  margin: 68px;
+  padding: 70px;
+  border: 3px solid #b1b0b0;
+  border-radius: 8px;
+  text-align: center;
+  cursor: pointer;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.container h3 {
+  margin-top: 10px;
+}
+
+.container:hover {
+  background-color: #746f6f;
+  border-color: rgb(33, 33, 106);
+}
+
+.container.doctor {
+  background-image: url('../../public/doctor\ managment.jpg');
+}
+
+.container.appointment {
+  background-image: url('../../public/appointmet.jpg');
+}
+
+.container.viewing {
+  background-image: url('../../public/view.jpg');
+}

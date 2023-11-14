@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
 import "./AppointmentBooking.css";
 
 export default function AppointmentBookingForm({ doctors }) {
@@ -10,6 +11,7 @@ export default function AppointmentBookingForm({ doctors }) {
   const [successMessage, setSuccessMessage] = useState("");
   const [error, setError] = useState("");
   const [bookedSlots, setBookedSlots] = useState([]);
+  const [showPopup, setShowPopup] = useState(false);
 
   const navigate = useNavigate();
 
@@ -45,6 +47,7 @@ export default function AppointmentBookingForm({ doctors }) {
       return;
     }
 
+    
     const appointments = JSON.parse(localStorage.getItem("appointments") || "[]");
     const appointmentData = {
       patient: patientName,
@@ -55,7 +58,7 @@ export default function AppointmentBookingForm({ doctors }) {
     appointments.push(appointmentData);
     localStorage.setItem("appointments", JSON.stringify(appointments));
 
-    setSuccessMessage("Appointment booked successfully!");
+    // setSuccessMessage("Appointment booked successfully!");
     setBookedSlots([...bookedSlots, appointmentData]); // Update the list of booked slots
 
     setPatientName("");
@@ -63,18 +66,29 @@ export default function AppointmentBookingForm({ doctors }) {
     setSelectedDay("");
     setSelectedTime("");
     setError("");
+    setShowPopup(true);
 
     navigate("/appointment-management");
+       //popup
+       setTimeout(() => {
+        setShowPopup(false);
+      }, 3000);
   };
-
+const  backtohome=()=>{
+  navigate('/home');
+}
   const timeSlots = ["09:00", "13:00", "15:00"]; // Define  time slots
 
   return (
+    <div className="appointment-body">
     <div className="appointment-form-container">
+      <div className="back-button">
+      <button onClick={backtohome}>Back</button>
+      </div>
       <h2>Book an Appointment</h2>
       <form onSubmit={handleSubmit}>
         {error && <p className="error-message">{error}</p>}
-        {successMessage && <p className="success-message">{successMessage}</p>}
+        {/* {successMessage && <p className="success-message">{successMessage}</p>} */}
 
         <div className="appointment-form">
           <label className="heading">Patient Name:</label>
@@ -146,6 +160,18 @@ export default function AppointmentBookingForm({ doctors }) {
           Book Appointment
         </button>
       </form>
+      <Modal show={showPopup} onHide={() => setShowPopup(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Success</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>Your submission was successful!</Modal.Body>
+        {/* <Modal.Footer>
+          <Button variant="primary" onClick={() => setShowPopup(false)}>
+            Close
+          </Button>
+        </Modal.Footer> */}
+      </Modal>
+    </div>
     </div>
   );
 }

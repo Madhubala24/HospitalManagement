@@ -1,16 +1,29 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./doctor.css";
 
 export default function AllDetailsTable({  onDelete }) {
+  const navigate=useNavigate()
   const doctorData = JSON.parse(localStorage.getItem("doctorData") || "[]");
   const handleDeleteClick = (index) => {
     onDelete(index);
   };
+  const backtohome=()=>{
+    navigate('/home')
+  }
   return (
-    <div className="container">
-      <h2>Details Table</h2>
-     <button><Link to="/register">Add Register</Link> </button> 
+    <div className="doctortable-body">
+      {/* <h1>Details Table</h1>  */}
+      <div className="register-button">
+     
+      <button><Link to="/register">Add Register</Link> </button> 
+     </div>
+
+      <div className="back-button">
+      <button onClick={backtohome}>Back</button>
+      </div>
+      
+    
       <table className="custom-table">
         <thead>
           <tr>
@@ -42,5 +55,6 @@ export default function AllDetailsTable({  onDelete }) {
         </tbody>
       </table>
     </div>
+ 
   );
 }

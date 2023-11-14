@@ -18,9 +18,13 @@ export default function EditForm() {
     localStorage.setItem("doctorData", JSON.stringify(doctorData));
     navigate("/doctor-management"); // Redirect to the details page after editing
   };
+  const backtohome=()=>{
+    navigate('/doctor-management');
+  }
 
   return (
     <div className="container">
+      <button onClick={backtohome}> Back </button>
       <h1>Edit Doctor Information</h1>
       <form onSubmit={handleSubmit}>
         <div className="form-element">

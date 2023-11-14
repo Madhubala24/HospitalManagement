@@ -1,56 +1,47 @@
 
-export const patientData = [
-    {
-      username: "patient1",
-      password: "123456",
-     
-    },
-    {
-      username: "patient2",
-      password: "123456",
-     
-    },
-    {
-      username: "patient3",
-      password: "123456",
-     
-    },
-    {
-      username: "patient4",
-      password: "123456",
-      
-    },
-    {
-      username: "patient5",
-      password: "123456",
-      
-    },
-  ];
+const doctorData = [
+  {
+    doctorusername: "Warner",
+    password: "Welcome",
+  },
+  {
+    doctorusername: "Elisa",
+    password: "Welcome",
+  },
+  {
+    doctorusername: "anderson",
+    password: "Welcome",
+  },
+  {
+    doctorusername: "wilson",
+    password: "Welcome",
+  },
+  {
+    doctorusername: "jones",
+    password: "Welcome",
+  },
+];
 
-  export const doctorData = [
-    {
-      username: "Warner",
-      password: "Welcome",
-     
-    },
-    {
-      username: "smith",
-      password: "Welcome",
-       
-    },
-    {
-      username: "anderson",
-      password: "Welcome",
-      
-    },
-    {
-      username: "wilson",
-      password: "Welcome",
-      
-    },
-    {
-      username: "jones",
-      password: "Welcome",
-       
-    },
-  ];
+const patientData = [
+  {
+    username: "Asmir",
+    password: "123456",
+  },
+  {
+    username: "Parvatha",
+    password: "123456",
+  },
+  {
+    username: "Sriram",
+    password: "123456",
+  },
+];
+
+const adminData = [
+  {
+    email: "admin",
+    password: "admin123",
+  },
+];
+
+export { doctorData, patientData, adminData };
