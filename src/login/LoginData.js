@@ -1,4 +1,3 @@
-
 const doctorData = [
   {
     doctorusername: "Warner",
