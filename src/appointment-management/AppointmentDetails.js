@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./appointmentDetails.css";
 import { useNavigate } from "react-router-dom";
+import AllHeader from "../AllHeader";
 
 export default function AppointmentDetails() {
   const navigate = useNavigate();
@@ -59,11 +60,12 @@ export default function AppointmentDetails() {
   };
 
   return (
+    <>
+   <AllHeader />
+
     <div className="appointmentview-body">
+      
       <div className="appointment-details-container">
-        <div className="back-button">
-          <button onClick={backToHome}>Back</button>
-        </div>
         <h2>View Appointment Booking Details</h2>
         <div>
           <label>Filter By:</label>
@@ -111,5 +113,6 @@ export default function AppointmentDetails() {
         </table>
       </div>
     </div>
+    </>
   );
 }

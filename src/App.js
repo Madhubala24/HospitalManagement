@@ -46,7 +46,9 @@ function App() {
 
   const currentLogInStatus = JSON.parse(localStorage.getItem("isLoggedIn"));
   const [userIsLoggedIn, setUserIsLoggedIn] = useState(
-    "patientLog" === currentLogInStatus
+    "patientLog" === currentLogInStatus || 
+    "adminLog" === currentLogInStatus ||
+    "doctorLog" === currentLogInStatus
   );
 
   //func to handle doc delete

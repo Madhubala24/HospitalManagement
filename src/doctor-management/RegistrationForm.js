@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import { useNavigate } from "react-router-dom";
 import "./register.css";
+import AllHeader from "../AllHeader";
 
 export default function RegistrationForm() {
   // Initialize necessary state variables
@@ -66,7 +67,10 @@ export default function RegistrationForm() {
   };
 
   return (
+    <>
+    <AllHeader />
     <div className="register-body">
+      
       <div className="registration-container">
         <h1>Doctor Registration Form</h1>
         <div className="back-button">
@@ -233,5 +237,6 @@ export default function RegistrationForm() {
         </Modal>
       </div>
     </div>
+    </>
   );
 }
