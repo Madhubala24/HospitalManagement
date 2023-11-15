@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
+import AllHeader from "../AllHeader";
 import "./AppointmentBooking.css";
 
 export default function AppointmentBookingForm({ doctors }) {
@@ -95,7 +96,10 @@ export default function AppointmentBookingForm({ doctors }) {
   const timeSlots = ["09:00", "13:00", "15:00"]; // Define  time slots
 
   return (
+    <>
+    <AllHeader />
     <div className="appointment-body">
+     
       <div className="appointment-form-container">
         <div className="back-button">
           <button onClick={backtohome}>Back</button>
@@ -190,5 +194,6 @@ export default function AppointmentBookingForm({ doctors }) {
         </Modal>
       </div>
     </div>
+    </>
   );
 }

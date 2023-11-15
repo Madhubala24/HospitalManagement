@@ -3,28 +3,29 @@ import { doctorData, patientData, adminData } from "./LoginData";
 import { useNavigate } from "react-router-dom";
 import "./login.css";
 
-export default function LoginPage({ onLogin }) {
+export default function LoginPage({ onLogin }) { //onlogin func pass from app.js
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    const lowercaseUsername = username.toLowerCase(); // Convert entered username to lowercase
     //check if the entered credent belong to a doctor
     const isDoctor = doctorData.find(
       (doctor) =>
-        doctor.doctorusername === username && doctor.password === password
+        doctor.doctorusername.toLowerCase() === lowercaseUsername && doctor.password === password
     );
 
     const isPatient = patientData.find(
       //check if the entered credent belong to a patient
       (patient) =>
-        patient.username === username && patient.password === password
+        patient.username.toLowerCase() === lowercaseUsername && patient.password === password
     );
 
     const isAdmin = adminData.find(
       //check if the entered credent belong to a admin
-      (admin) => admin.email === username && admin.password === password
+      (admin) => admin.email.toLowerCase() === lowercaseUsername && admin.password === password
     );
 
     if (isDoctor) {
@@ -54,7 +55,7 @@ export default function LoginPage({ onLogin }) {
     <div className="login-body">
       <form className="login-form">
         <div className="input-group">
-          <label className="input-label">Username (Email)</label>
+          <label className="input-label">Username</label>
           <input
             className="input-field"
             type="text"

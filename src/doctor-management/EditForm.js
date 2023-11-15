@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import AllHeader from "../AllHeader";
 
 export default function EditForm() {
   // Retrieve the index parameter from the URL
@@ -37,7 +38,10 @@ export default function EditForm() {
   };
 
   return (
+    <>
+     <AllHeader />
     <div className="register-body">
+     
       <div className="registration-container">
         <button onClick={backtohome} className="back-button">
           Back
@@ -177,5 +181,6 @@ export default function EditForm() {
         </form>
       </div>
     </div>
+    </>
   );
 }

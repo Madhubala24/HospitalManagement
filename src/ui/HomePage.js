@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import AllHeader from "../AllHeader";
 import "./HomePage.css";
 
 export default function HomePage() {
@@ -7,7 +8,7 @@ export default function HomePage() {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInDoctor"));
   const loggedInPatient = JSON.parse(localStorage.getItem("loggedInPatient"));
-  const loggedInAdmin = JSON.parse(localStorage.getItem("loggedInAdmin")); // Define loggedInAdmin here
+  const loggedInAdmin = JSON.parse(localStorage.getItem("loggedInAdmin")); 
 
   const handleLogout = () => {
     //Clear logged-in status and details
@@ -21,6 +22,7 @@ export default function HomePage() {
 
   return (
     <div className="home-body">
+      {/* <AllHeader handleLogout={handleLogout}/> */}
       <div className="header">
         <strong>
           <h1>Welcome to the Hospital Management System</h1>

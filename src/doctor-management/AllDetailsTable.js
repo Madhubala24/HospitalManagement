@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Modal, Button } from "react-bootstrap";
 import "./AllDetailsTable.css";
+import AllHeader from "../AllHeader";
 
 export default function AllDetailsTable({ onDelete }) {
   //state variables
@@ -10,6 +11,14 @@ export default function AllDetailsTable({ onDelete }) {
   const [deleteIndex, setDeleteIndex] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
 
+
+  // if (doctorData.length === 0 || typeof doctorData === "undefined") {
+  //   return (
+  //     <div className="table-container">
+  //       <p>No projects found. You can create new projects to proceed.</p>
+  //     </div>
+  //   );
+  // }
   // Handle click event to trigger delete confirmation modal
   const handleDeleteClick = (index) => {
     setDeleteIndex(index);
@@ -34,7 +43,10 @@ export default function AllDetailsTable({ onDelete }) {
   };
 
   return (
+    <>
+      <AllHeader />
     <div className="doctortable-body">
+    
       {/* Button to navigate to registration page */}
       <div className="register-button">
      
@@ -43,11 +55,12 @@ export default function AllDetailsTable({ onDelete }) {
       </div>
 
       {/* Back button to navigate back to home */}
-      <div className="back-button">
+      {/* <div className="back-button">
         <button onClick={backtohome}>Back</button>
-      </div>
+      </div> */}
 
       {/* Table displaying doctor details */}
+      {doctorData.length !== 0? 
       <table className="custom-table">
         <thead>
           <tr>
@@ -87,8 +100,8 @@ export default function AllDetailsTable({ onDelete }) {
             </tr>
           ))}
         </tbody>
-      </table>
-
+      </table>:  <p>No projects found. You can create new projects to proceed.</p>
+}
       {/* Modal for delete confirmation */}
       <Modal show={showConfirmation} onHide={cancelDelete}>
         <Modal.Header closeButton>
@@ -109,5 +122,6 @@ export default function AllDetailsTable({ onDelete }) {
         </Modal.Footer>
       </Modal>
     </div>
+    </>
   );
 }
