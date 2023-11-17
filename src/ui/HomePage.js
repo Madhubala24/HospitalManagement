@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import AllHeader from "../AllHeader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "./HomePage.css";
 
 export default function HomePage() {
@@ -22,66 +23,68 @@ export default function HomePage() {
 
   return (
     <div className="home-body">
-      {/* <AllHeader handleLogout={handleLogout}/> */}
       <div className="header">
         <strong>
-          <h1>Welcome to the Hospital Management System</h1>
+          <h1>Hospital Management System</h1>
         </strong>
-        <button onClick={handleLogout}>Logout</button>
+        <div onClick={handleLogout}>
+  <FontAwesomeIcon icon={faSignOutAlt} />
+  Logout
+</div>
       </div>
       <div className="center-content">
-        <div className="container-wrapper">
-          <div className="buttons">
-            {loggedInDoctor && (
-              <Link to="/doctor-management">
-                <button className="container doctor">Doctor Management</button>
-              </Link>
-            )}
-            {loggedInDoctor && (
-              <Link to="/appointment-details">
-                <button className="container viewing">
-                  Appointment Details
-                </button>
-              </Link>
-            )}
+        <div className="container">
+          {loggedInDoctor && (
+            <div className="button-container">
+              <div >
+                <Link to="/doctor_management">
+                  <button className="button">Doctor Management--> </button>
+                </Link>
+              </div>
+              <div >
+                <Link to="/appointment-details">
+                  <button className="button"> View Appointment--> </button>
+                </Link>
+              </div>
+            </div>
+          )}
 
-            {loggedInPatient && (
-              <Link to="/appointment-management">
-                <button className="container appointment"></button>
-              </Link>
-            )}
-            {loggedInPatient && (
-              <Link to="/appointment-details">
-                <strong>
-                  {" "}
-                  <button className="container viewing">
-                    Appointment Details
-                  </button>{" "}
-                </strong>
-              </Link>
-            )}
+          {loggedInPatient && (
+            <div className="button-container">
+              <div >
+                <Link to="/appointment_management">
+                  <button className="button">Appointment Booking--> </button>
+                </Link>
+              </div>
+              <div>
+                <Link to="/appointment-details">
+                  <strong>
+                    <button className="button"> View Appointment--> </button>
+                  </strong>
+                </Link>
+              </div>
+            </div>
+          )}
 
-            {loggedInAdmin && (
-              <Link to="/appointment-details">
-                <button className="container viewing">
-                  Appointment Details
-                </button>
-              </Link>
-            )}
-
-            {loggedInAdmin && (
-              <Link to="/doctor-management">
-                <button className="container doctor">doctor management</button>
-              </Link>
-            )}
-            {loggedInAdmin && (
-              <Link to="/appointment-management">
-                <button className="container appointment">
-                  appointment-management
-                </button>
-              </Link>
-            )}
-          </div>
+          {loggedInAdmin && (
+            <div className="button-container">
+              <div>
+                <Link to="/appointment-details">
+                  <button className="button">View Appointment--> </button>
+                </Link>
+              </div>
+              <div >
+                <Link to="/doctor_management">
+                  <button className="button">Doctor Management--> </button>
+                </Link>
+              </div>
+              <div >
+                <Link to="/appointment_management">
+                  <button className="button">Appointment Management--> </button>
+                </Link>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

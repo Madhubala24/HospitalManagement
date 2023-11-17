@@ -2,13 +2,15 @@
     margin: auto;
     max-width: 600px; 
     padding: 20px;
+    background-color: white; 
     border: 3px solid #5f5e5e;
     border-radius: 8px;
     text-align: center;
+    
   }
   
   .form-element {
-    margin-bottom: 20px;
+    margin-bottom: 5px;
   }
   
   .label {
@@ -19,7 +21,7 @@
   
   .input {
     width: 100%;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid #0b0a0a;
     border-radius: 5px;
     box-sizing: border-box;
@@ -28,7 +30,7 @@
   .radio-group {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   
   .radio-label {
@@ -51,7 +53,8 @@
 
   .register-body {
     overflow: auto;
-     background-image: url('../../public/registerform\ bg.jpg');
+    margin-top: 80px;
+     background-image: url('../../public/regbg.jpg');
     background-size: cover;
     background-position: center;
     background-size: 100% 100%;
@@ -59,4 +62,9 @@
     display: flex;
     justify-content: center;
     align-items: center;   
+  
+}
+
+body.modal-open {
+  overflow-y: auto;
 }

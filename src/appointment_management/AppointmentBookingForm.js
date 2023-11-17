@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import AllHeader from "../AllHeader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import "./AppointmentBooking.css";
 
 export default function AppointmentBookingForm({ doctors }) {
@@ -42,7 +44,8 @@ export default function AppointmentBookingForm({ doctors }) {
       (doctor) => doctor.name === selectedDoctor
     );
     if (!selectedDoctorData.availability.includes(selectedDay)) {
-      setError("Selected doctor is not available on the chosen day.");
+      setError(`Dr.${selectedDoctor} is not available on that day
+        `);
       return;
     }
 
@@ -83,16 +86,19 @@ export default function AppointmentBookingForm({ doctors }) {
     setError("");
     setShowPopup(true); // show success popup
 
-    navigate("/appointment-management");
+    
     //close popup aftr 3 seconds
     setTimeout(() => {
       setShowPopup(false);
+      navigate("/appointment-details");
     }, 3000);
+    
   };
 
   const backtohome = () => {
     navigate("/home");
   };
+
   const timeSlots = ["09:00", "13:00", "15:00"]; // Define  time slots
 
   return (
@@ -101,9 +107,11 @@ export default function AppointmentBookingForm({ doctors }) {
     <div className="appointment-body">
      
       <div className="appointment-form-container">
-        <div className="back-button">
-          <button onClick={backtohome}>Back</button>
-        </div>
+      <div className="back-button">
+      <button onClick={backtohome}>
+        <FontAwesomeIcon icon={faArrowLeft} /> Back
+      </button>
+    </div>
         <h2>Book an Appointment</h2>
         <form onSubmit={handleSubmit}>
           {error && <p className="error-message">{error}</p>}
@@ -185,6 +193,9 @@ export default function AppointmentBookingForm({ doctors }) {
           <button type="submit" className="submit">
             Book Appointment
           </button>
+          {/* <button type="view" className="view">
+            View Appointment
+          </button> */}
         </form>
         <Modal show={showPopup} onHide={() => setShowPopup(false)}>
           <Modal.Header closeButton>

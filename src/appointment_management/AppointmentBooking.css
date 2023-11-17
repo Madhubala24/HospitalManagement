@@ -1,6 +1,7 @@
 .appointment-form-container {
     width: 50%;
-    margin: auto;
+    margin: 90px;
+    margin-bottom: 0px;
     padding: 30px;
     border: 2px solid rgb(86, 82, 82);
     border-radius: 10px;
@@ -64,8 +65,9 @@
   }
 
   .appointment-body {
-    overflow: hidden;
+    overflow: auto;
     background-image: url('../../public/inside\ book.jpg');
+    /* background-color: lightblue; */
     background-size: cover;
     background-position: center;
     background-size: 100% 100%;

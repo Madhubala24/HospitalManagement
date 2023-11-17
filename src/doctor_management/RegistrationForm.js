@@ -1,52 +1,87 @@
 import React, { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import Modal from "react-bootstrap/Modal";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import "./register.css";
 import AllHeader from "../AllHeader";
 
-export default function EditForm() {
-  // Retrieve the index parameter from the URL
-  const { index } = useParams();
-  // Retrieve doctorData from local storage
-  const doctorData = JSON.parse(localStorage.getItem("doctorData") || "[]");
-  // Set initial form data based on the selected doctors index
-  const [formData, setFormData] = useState(doctorData[index]);
-  // Initialize navigate function for navigation
+export default function RegistrationForm() {
+  // Initialize necessary state variables
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
 
-  // Handle input changes in the form
+  // Form data state
+  const [formData, setFormData] = useState({
+    name: "",
+    gender: "Male",
+    department: "",
+    experience: "",
+    availability: "Monday",
+    fromTime: "09:00",
+    toTime: "20:00",
+    emergencyNumber: "",
+  });
+
+  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
+  //   const numericPattern = /^[0-9]*$/;
+  //  if(numericPattern.test(value)){
     setFormData({ ...formData, [name]: value });
-  };
+   }
+  
 
-  // Handle form submission
+  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Update doctorData with the edited form data
-    doctorData[index] = formData;
+    // Retrieve existing doctor data from local storage
+    const doctorData = JSON.parse(localStorage.getItem("doctorData") || "[]");
 
-    // Save the updated doctorData to local storage
+    // Add new form data to the existing doctor data
+    doctorData.push(formData);
+
+    // Update local storage with the new data
     localStorage.setItem("doctorData", JSON.stringify(doctorData));
 
-    // after editing
-    navigate("/doctor-management");
+    // Display success popup
+    setShowPopup(true);
+
+    // Reset form data after submission
+    setFormData({
+      name: "",
+      gender: "Male",
+      department: "",
+      experience: "",
+      availability: "Monday",
+      fromTime: "09:00",
+      toTime: "20:00",
+      emergencyNumber: "",
+    });
+
+    // Hide success popup after 5 seconds
+    setTimeout(() => {
+      setShowPopup(false);
+    }, 3000);
   };
 
   // Navigate back to the doctor management page
-  const backtohome = () => {
-    navigate("/doctor-management");
+  const backtodoctor = () => {
+    navigate("/doctor_management");
   };
 
   return (
     <>
-     <AllHeader />
-    <div className="register-body">
-     
+    <AllHeader />
+    <div className="register-body">      
       <div className="registration-container">
-        <button onClick={backtohome} className="back-button">
-          Back
-        </button>
-        <h1>Edit Doctor Information</h1>
+        <h1>Doctor Registration Form</h1>
+        <div className="back-button">
+          <button onClick={backtodoctor}>
+          <FontAwesomeIcon icon={faArrowLeft} />
+           Back </button>
+        </div>
         <form onSubmit={handleSubmit}>
           <div className="form-element">
             <label htmlFor="name" className="label">
@@ -126,6 +161,7 @@ export default function EditForm() {
               onChange={handleChange}
               className="input"
               required
+              min="0"
             />
           </div>
 
@@ -146,8 +182,11 @@ export default function EditForm() {
               <option value="Wednesday">Wednesday</option>
               <option value="Thursday">Thursday</option>
               <option value="Friday">Friday</option>
+              <option value="Saturday">Saturday</option>
+              <option value="Sunday">Sunday</option>
             </select>
           </div>
+
           <div className="form-element">
             <label htmlFor="fromTime" className="label">
               From:
@@ -174,11 +213,36 @@ export default function EditForm() {
               required
             />
           </div>
+{/* 
+          <div className="form-element">
+            <label htmlFor="emergencyNumber" className="label">
+              Emergency Number:
+            </label>
+            <input
+              type="tel"
+              id="emergencyNumber"
+              name="emergencyNumber"
+              value={formData.emergencyNumber}
+              onChange={handleChange}
+              className="input"
+              required
+              pattern="[0-9]*"
+            />
+          </div> */}
 
           <div className="form-element">
-            <input type="submit" value="Save" className="submit-button" />
+            <input type="submit" value="Submit" className="submit-button" />
           </div>
         </form>
+
+        {/* Success popup */}
+        <Modal show={showPopup} onHide={() => setShowPopup(false)}>
+          <Modal.Header closeButton>
+            <Modal.Title>Success</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>Your submission was successful!</Modal.Body>
+          <Modal.Footer></Modal.Footer>
+        </Modal>
       </div>
     </div>
     </>
