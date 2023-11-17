@@ -1,9 +1,21 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
 
-const AllHeader = ({ handleLogout }) => {
 
+const AllHeader = () => {
+  const navigate=useNavigate();
+  const handleLogout = () => {
+    //Clear logged-in status and details
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("loggedInDoctor");
+    localStorage.removeItem("loggedInPatient");
+    localStorage.removeItem("loggedInAdmin");
+    //Redirect to the login page
+    navigate ("/");
+  };
   return (
     <div className="header">
       <strong>
@@ -13,7 +25,10 @@ const AllHeader = ({ handleLogout }) => {
           </Link>
         </h1>
       </strong>
-      <button onClick={handleLogout}>Logout</button>
+      <button className="logout-button" onClick={handleLogout}>
+  <FontAwesomeIcon icon={faSignOutAlt} />
+  Logout
+</button>
     </div>
   );
 };

@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { doctorData, patientData, adminData } from "./LoginData";
 import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import "./login.css";
 
 export default function LoginPage({ onLogin }) { //onlogin func pass from app.js
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    if( !username || !password){
+      setError("Please enter both username and password")
+      return;
+    }
     const lowercaseUsername = username.toLowerCase(); // Convert entered username to lowercase
     //check if the entered credent belong to a doctor
     const isDoctor = doctorData.find(
@@ -56,22 +63,30 @@ export default function LoginPage({ onLogin }) { //onlogin func pass from app.js
       <form className="login-form">
         <div className="input-group">
           <label className="input-label">Username</label>
+          
           <input
             className="input-field"
             type="text"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
-        </div>
-        <div className="input-group">
+         </div>
+        <div className="input-group password-input">
           <label className="input-label">Password</label>
+          <div className="password-field">
           <input
-            className="input-field"
-            type="password"
+            className="input-field with-icon"
+            type={showPassword ? "text" : "password"}
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-        </div>
+     <FontAwesomeIcon
+      icon={showPassword ? faEye : faEyeSlash}
+      className="eye-icon"
+      onClick={() => setShowPassword(!showPassword)}
+    />
+    </div>
+    </div>
         <button className="login-button" type="button" onClick={handleLogin}>
           Login
         </button>

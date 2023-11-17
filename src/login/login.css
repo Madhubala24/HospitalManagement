@@ -44,7 +44,29 @@
     cursor: pointer;
     transition: background-color 0.3s;
   }
+
+  .password-input {
+  position: relative;
+}
+
+.password-field {
+  position: relative; 
+ 
   
+}
+
+
+.input-field.with-icon {
+  padding-right: 60px; 
+}
+
+.eye-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
   .login-button:hover {
     background-color: #0056b3;
   }
