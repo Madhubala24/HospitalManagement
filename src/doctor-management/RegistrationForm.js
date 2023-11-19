@@ -68,7 +68,7 @@ export default function RegistrationForm() {
 
   // Navigate back to the doctor management page
   const backtodoctor = () => {
-    navigate("/doctor_management");
+    navigate("/doctor-management");
   };
 
   return (

@@ -5,14 +5,14 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import AllDetailsTable from "./doctor_management/AllDetailsTable";
-import RegistrationForm from "./doctor_management/RegistrationForm";
-import EditForm from "./doctor_management/EditForm";
+import AllDetailsTable from "./doctor-management/AllDetailsTable";
+import RegistrationForm from "./doctor-management/RegistrationForm";
+import EditForm from "./doctor-management/EditForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./login/LoginPage";
 import HomePage from "./ui/HomePage";
-import AppointmentBookingForm from "./appointment_management/AppointmentBookingForm";
-import AppointmentDetails from "./appointment_management/AppointmentDetails";
+import AppointmentBookingForm from "./appointment-management/AppointmentBookingForm";
+import AppointmentDetails from "./appointment-management/AppointmentDetails";
 
 function App() {
   const [doctors, setDoctors] = useState([]);
@@ -82,7 +82,7 @@ function App() {
             <Route path="/home" element={<HomePage />} />
             {/* Add a route for the home page */}
             <Route
-              path="/doctor_management"
+              path="/doctor-management"
               element={
                 <AllDetailsTable onDelete={(index) => handleDelete(index)} />
               }
@@ -99,7 +99,7 @@ function App() {
             <Route path="/register" element={<RegistrationForm />} />
             <Route path="/edit/:index" element={<EditForm />} />
             <Route
-              path="/appointment_management"
+              path="/appointment-management"
               element={<AppointmentBookingForm doctors={doctors} />}
             />
           </>

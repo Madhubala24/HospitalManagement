@@ -14,8 +14,17 @@
   text-decoration: none;
   border-radius: 5px;
 }
+
 .back-button {
   margin-top: 75px;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px; /* Adjust padding as needed */
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+
 }
 
 .form-element {
@@ -80,7 +89,7 @@
 }
 .doctortable-body {
 position: relative;
-  overflow: hidden;
+  overflow: auto;
   /* background-image: url('../../public/cimage.jpg'); */
   background-color: rgb(188, 211, 247);
   background-size: cover;

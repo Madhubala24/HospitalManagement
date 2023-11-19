@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import AllHeader from "../AllHeader";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 export default function EditForm() {
   // Retrieve the index parameter from the URL
@@ -29,12 +31,12 @@ export default function EditForm() {
     localStorage.setItem("doctorData", JSON.stringify(doctorData));
 
     // after editing
-    navigate("/doctor_management");
+    navigate("/doctor-management");
   };
 
   // Navigate back to the doctor management page
-  const backtohome = () => {
-    navigate("/doctor_management");
+  const backToHome = () => {
+    navigate("/doctor-management");
   };
 
   return (
@@ -43,9 +45,11 @@ export default function EditForm() {
     <div className="register-body">
      
       <div className="registration-container">
-        <button onClick={backtohome} className="back-button">
-          Back
-        </button>
+      <div className="back-button">
+      <button onClick={backToHome}>
+        <FontAwesomeIcon icon={faArrowLeft} /> Back
+      </button>
+    </div>
         <h1>Edit Doctor Information</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-element">
