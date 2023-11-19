@@ -59,8 +59,18 @@ export default function LoginPage({ onLogin }) { //onlogin func pass from app.js
   };
 
   return (
+    
     <div className="login-body">
-      <form className="login-form">
+      <div className="login-container">
+        <div className="image-container ">
+     
+        {/* <h2>SIGN IN</h2> */}
+            {/* Add your image here */}
+            <img src="../../public/doctors.jpg" />
+          
+        </div>
+       
+        <form className="login-form">
         <div className="input-group">
           <label className="input-label">Username</label>
           
@@ -92,6 +102,9 @@ export default function LoginPage({ onLogin }) { //onlogin func pass from app.js
         </button>
         {error && <p className="error-message">{error}</p>}
       </form>
-    </div>
+        </div>
+      </div>
+   
+   
   );
 }

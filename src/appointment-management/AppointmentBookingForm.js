@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import AllHeader from "../AllHeader";
+import "./AppointmentBooking.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import "./AppointmentBooking.css";
 
 export default function AppointmentBookingForm({ doctors }) {
   //state variables to manage form input amd state
@@ -16,10 +16,21 @@ export default function AppointmentBookingForm({ doctors }) {
   //list of bookedslots to prevent doublebooking
   const [bookedSlots, setBookedSlots] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
-
+  const [availableDays, setAvailableDays] = useState([]);
+  const [appointmentInfo, setAppointmentInfo] = useState(null);
   //navigate function
   const navigate = useNavigate();
-
+  
+  const handleDoctorChange = (selectedDoctor) => {
+    console.log("Selected Doctor:", selectedDoctor);
+  
+    // Find the selected doctor's data
+    const doctorData = doctors.find((doctor) => doctor.name === selectedDoctor);
+  
+    // Update available days based on the selected doctor
+    setAvailableDays(doctorData ? doctorData.availability : []);
+    console.log("Available Days:", doctorData ? doctorData.availability : []);
+  };
   //handle for submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -44,8 +55,7 @@ export default function AppointmentBookingForm({ doctors }) {
       (doctor) => doctor.name === selectedDoctor
     );
     if (!selectedDoctorData.availability.includes(selectedDay)) {
-      setError(`Dr.${selectedDoctor} is not available on that day
-        `);
+      setError("Selected doctor is not available on the chosen day.");
       return;
     }
 
@@ -85,20 +95,23 @@ export default function AppointmentBookingForm({ doctors }) {
     setSelectedTime("");
     setError("");
     setShowPopup(true); // show success popup
-
-    
+ // Set appointment information for displaying in the modal
+ setAppointmentInfo({
+  patient: patientName,
+  doctor: selectedDoctor,
+  day: selectedDay,
+  time: selectedTime,
+});
+    navigate("/appointment-management");
     //close popup aftr 3 seconds
     setTimeout(() => {
       setShowPopup(false);
-      navigate("/appointment-details");
-    }, 3000);
-    
+    }, 20000);
   };
 
   const backtohome = () => {
     navigate("/home");
   };
-
   const timeSlots = ["09:00", "13:00", "15:00"]; // Define  time slots
 
   return (
@@ -115,14 +128,17 @@ export default function AppointmentBookingForm({ doctors }) {
         <h2>Book an Appointment</h2>
         <form onSubmit={handleSubmit}>
           {error && <p className="error-message">{error}</p>}
-          <div className="appointment-form">
-            <label className="heading">Patient Name:</label>
+          <div>
+            <strong>
+            <label>Patient Name:</label>
+            </strong>
             <input
               type="text"
               value={patientName}
               onChange={(e) => setPatientName(e.target.value)}
               required
             />
+            
           </div>
 
           <div>
@@ -193,16 +209,23 @@ export default function AppointmentBookingForm({ doctors }) {
           <button type="submit" className="submit">
             Book Appointment
           </button>
-          {/* <button type="view" className="view">
-            View Appointment
-          </button> */}
         </form>
-        <Modal show={showPopup} onHide={() => setShowPopup(false)}>
-          <Modal.Header closeButton>
-            <Modal.Title>Success</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>Your submission was successful!</Modal.Body>
-        </Modal>
+     
+    <Modal show={showPopup} onHide={() => setShowPopup(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Success</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <p>Your appointment was successfully booked!</p>
+        <p>
+          Patient Name: {appointmentInfo?.patient} <br />
+          Doctor: {appointmentInfo?.doctor} <br />
+          Day: {appointmentInfo?.day} <br />
+          Time: {appointmentInfo?.time}
+        </p>
+      </Modal.Body>
+    </Modal>
+
       </div>
     </div>
     </>

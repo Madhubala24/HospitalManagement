@@ -12,3 +12,29 @@
     text-decoration: none; 
   }
   
+  .leftlogo {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+  }
+  
+  .logo {
+    margin-right: 2px; /* Adjust the space between the logo and heading */
+  }
+  
+  .heading {
+   color: rgb(239, 173, 66);
+    margin-left: 2px; /* Adjust the space between the logo and heading */
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    background-color: rgb(0, 89, 128);
+    color: rgb(218, 215, 215);
+    position: fixed; 
+    top: 0; 
+    width: 100%; 
+    z-index: 1000; 
+  }

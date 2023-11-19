@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 5px;
   background-color: rgb(0, 89, 128);
   color: rgb(218, 215, 215);
   position: fixed; 
@@ -22,83 +22,48 @@
   z-index: 1000; 
 }
 
+.logo img {
+  width: 40px;
+}
+
+.nav-buttons {
+  display: flex;
+ margin-left: 65%;
+}
+
+.logout {
+  cursor: pointer;
+}
+
 .center-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
-  margin-left: 20px;
-  
-  /* margin-top: 50px; */
+  margin-left: 5%;
+  margin-top: 8%;
 }
-
-/* .container-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-top: 20px;
-} */
-
-/* .container {
-  margin: 68px;
-  padding: 70px;
-  border: 3px solid #b1b0b0;
-  border-radius: 8px;
-  text-align: center;
-  cursor: pointer;
-  background-size: cover;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
-
-/* .container img {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-} */
 
 .container h3 {
   margin-top: 10px;
 }
 
-/* .container:hover {
-  background-color: #746f6f;
-  border-color: rgb(33, 33, 106);
-} */
-/* 
-.container.doctor {
-  background-image: url('../../public/doctor\ managment.jpg');
-}
-
-.container.appointment {
-  background-image: url('../../public/appointmet.jpg');
-}
-
-.container.viewing {
-  background-image: url('../../public/view.jpg');
-} */
-
 .container {
   display: flex;
-  flex-direction: row; /* Change to row */
+  flex-direction: row; 
   gap: 20px;
   justify-content: flex-start;
   margin-top: 20px;
 }
-/* ... your existing styles ... */
 
 .button-container {
   display: flex;
   flex-direction: row;
   gap: 10px;
-  /* background-color: aqua; */
   margin: 0; 
-  margin: 68px;
+  margin: 30px;
   padding: 70px;
-  
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
@@ -107,31 +72,82 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 65;
+  margin-top: -1%;
 }
 
 .section-container {
   margin-bottom: 10px;
-  /* margin-left: 0; */
-  background-color: white; /* Set background color to white */
-  padding: 20px; /* Add padding for spacing */
+  background-color: white;
+  padding: 20px; 
   border-radius: 8px;
-  
 }
 
 .button {
-  margin: 10px;
+  margin-bottom: 50%;
+  margin: -110px;
   padding: 15px;
   font-size: 16px;
   border: none;
-  border-radius: 8px;
+  border-radius: 85px;
   cursor: pointer;
-  background-color: #d4d5d8;
-  color: #270404;
+  background-color: rgb(239, 173, 66);
+  color: #2d2c2c;
   transition: background-color 0.3s;
   text-align: center;
   text-decoration: none;
 }
 
 .button:hover {
-  background-color:rgb(0, 90, 128);
+  box-shadow: 0 0 10px rgb(0, 90, 128);
+}
+.emergency-section {
+  text-align: left;
+  margin-top: 50px;
+  margin-left: 20px;
+}
+.leftlogo {
+  display: flex;
+  align-items: center; 
+}
+
+.logo {
+  margin-right: 2px; 
+}
+
+.heading {
+ color: rgb(239, 173, 66);
+  margin-left: 2px; 
+}
+.footer {
+  padding: 20px;
+  background-color: rgb(0, 89, 128);
+  color: rgb(218, 215, 215);
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 1000;
+}
+
+.nav-buttons a {
+  text-decoration: none; 
+  color: rgb(237, 233, 233); 
+  margin-right: 20px; 
+}
+
+.nav-buttons a:hover {
+  text-decoration: none; 
+  color: #fff; 
+}
+
+.tick-mark {
+  color: #101010; 
+}
+
+.center-content p::before {
+  content: '\2022'; 
+  color: #f1c40f; 
+  margin-right: 5px; 
+  font-weight: bold; 
 }

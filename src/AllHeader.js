@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "./Header.css";
-
+import logo from "../src/assets/websitelogo.png"
 
 const AllHeader = () => {
   const navigate=useNavigate();
@@ -17,18 +17,28 @@ const AllHeader = () => {
     navigate ("/");
   };
   return (
-    <div className="header">
-      <strong>
+    <div className="header"> 
+   <div className="leftlogo"> 
+        <div className="logo">
+        <img src={logo} alt="HMS Logo" />
+        </div>
+        <div className="heading">
+        <strong>
+          <h1>HMS</h1>
+        </strong>
+        </div>
+        </div>
+      {/* <strong>
         <h1>
           <Link to="/home" className="header-link">
             Hospital Management System
           </Link>
         </h1>
-      </strong>
-      <button className="logout-button" onClick={handleLogout}>
+      </strong> */}
+      <div className="logout" onClick={handleLogout}>
   <FontAwesomeIcon icon={faSignOutAlt} />
   Logout
-</button>
+</div>
     </div>
   );
 };

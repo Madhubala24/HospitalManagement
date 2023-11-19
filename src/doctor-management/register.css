@@ -49,6 +49,13 @@
   
   .back-button {
     margin-top: 75px;
+    background-color: black;
+    color: white;
+    border-radius: 4px;
+    padding: 4px 8px; /* Adjust padding as needed */
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
   }
 
   .register-body {

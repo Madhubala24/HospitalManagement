@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./appointmentDetails.css";
+import { useNavigate } from "react-router-dom";
 import AllHeader from "../AllHeader";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
 
 export default function AppointmentDetails() {
+  const navigate = useNavigate();
   const [appointments, setAppointments] = useState([]);
   const [filterBy, setFilterBy] = useState("day");
   const [filterValue, setFilterValue] = useState("");
@@ -13,7 +14,6 @@ export default function AppointmentDetails() {
   const [loggedInDoctor, setLoggedInDoctor] = useState(null);
   const [loggedInPatient, setLoggedInPatient] = useState(null);
   const [isLoggedInAdmin, setIsLoggedInAdmin] = useState(false);
-  const navigate = useNavigate();
 
   //fetch appointments data from localstrage
   const getAppointmentsData = () => {
@@ -56,8 +56,7 @@ export default function AppointmentDetails() {
     }
     setFilteredAppointments(filteredData);
   };
-   // Dropdown options based on filter
-   const getFilterOptions = () => {
+  const getFilterOptions = () => {
     if (filterBy === "day") {
       return [...new Set(appointments.map((appointment) => appointment.day))];
     } else if (filterBy === "user") {
@@ -68,7 +67,7 @@ export default function AppointmentDetails() {
     return [];
   };
 
-  // Navigate back to the doctor management page
+
   const backToHome = () => {
     navigate("/home");
   };
@@ -76,26 +75,26 @@ export default function AppointmentDetails() {
   return (
     <>
    <AllHeader />
-
+  
     <div className="appointmentview-body">
     <div className="back-button">
-          <button onClick={backToHome}>
-          <FontAwesomeIcon icon={faArrowLeft} /> Back </button>
-        </div>
-        <div>
+      <button onClick={backToHome}>
+        <FontAwesomeIcon icon={faArrowLeft} /> Back
+      </button>
+    </div>
       <div className="appointment-details-container">
         <h2>View Appointment Booking Details</h2>
-       
-            <label>Filter By:</label>
-            <select
-              value={filterBy}
-              onChange={(e) => setFilterBy(e.target.value)}
-            >
-              <option value="day">Day</option>
-              <option value="user">User</option>
-              <option value="doctor">Doctor</option>
-            </select>
-            {(filterBy !== "day" && filterBy !== "user" && filterBy !== "doctor") ? (
+        <div>
+          <label>Filter By:</label>
+          <select
+            value={filterBy}
+            onChange={(e) => setFilterBy(e.target.value)}
+          >
+            <option value="day">Day</option>
+            <option value="user">User</option>
+            <option value="doctor">Doctor</option>
+          </select>
+          {(filterBy !== "day" && filterBy !== "user" && filterBy !== "doctor") ? (
               <input
                 type="text"
                 value={filterValue}
@@ -115,9 +114,9 @@ export default function AppointmentDetails() {
               </select>
             )}
           <button onClick={handleFilter}>Filter</button>
-   </div>
-     
-       <table className="appointment-table">
+        </div>
+
+        <table className="appointment-table">
           <thead>
             <tr>
               <th>User</th>
