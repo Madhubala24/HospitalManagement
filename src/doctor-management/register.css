@@ -1,77 +1,77 @@
 .registration-container {
-    margin: auto;
-    max-width: 600px; 
-    padding: 20px;
-    background-color: white; 
-    border: 3px solid #5f5e5e;
-    border-radius: 8px;
-    text-align: center;
-    
-  }
-  
-  .form-element {
-    margin-bottom: 5px;
-  }
-  
-  .label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .input {
-    width: 100%;
-    padding: 5px;
-    border: 1px solid #0b0a0a;
-    border-radius: 5px;
-    box-sizing: border-box;
-  }
-  
-  .radio-group {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .radio-label {
-    flex: 1;
-    margin-right: 10px;
-  }
-  
-  .submit-button {
-    background-color: #007bff;
-    color: #080808;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .back-button {
-    margin-top: 75px;
-    background-color: black;
-    color: white;
-    border-radius: 4px;
-    padding: 4px 8px; /* Adjust padding as needed */
-    border: none;
-    cursor: pointer;
-    font-size: 14px;
-  }
-
-  .register-body {
-    overflow: auto;
-    margin-top: 80px;
-     background-image: url('../../public/regbg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-size: 100% 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;   
+  margin: auto;
+  max-width: 600px; 
+  padding: 20px;
+  background-color: white; 
+  border: 3px solid #5f5e5e;
+  border-radius: 8px;
+  text-align: center;
   
 }
 
+.form-element {
+  margin-bottom: 5px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #0b0a0a;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.radio-group {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.radio-label {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.submit-button {
+  background-color: #007bff;
+  color: #080808;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-button {
+  margin-top: 75px;
+  background-color: black;
+  color: white;
+  border-radius: 4px;
+  padding: 4px 8px; /* Adjust padding as needed */
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.register-body {
+  overflow: auto;
+  margin-top: 80px;
+   background-image: url('../../public/regbg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-size: 100% 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+
+}
+
 body.modal-open {
-  overflow-y: auto;
+overflow-y: auto;
 }

@@ -13,6 +13,7 @@ import LoginPage from "./login/LoginPage";
 import HomePage from "./ui/HomePage";
 import AppointmentBookingForm from "./appointment-management/AppointmentBookingForm";
 import AppointmentDetails from "./appointment-management/AppointmentDetails";
+import DoctorAvailability from "./appointment-management/DoctorAvailability";
 
 function App() {
   const [doctors, setDoctors] = useState([]);
@@ -101,6 +102,10 @@ function App() {
             <Route
               path="/appointment-management"
               element={<AppointmentBookingForm doctors={doctors} />}
+            />
+             <Route
+              path="/doctor-availability"
+              element={<DoctorAvailability doctors={doctors} />}
             />
           </>
         ) : null}

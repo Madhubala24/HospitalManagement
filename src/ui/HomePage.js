@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "./HomePage.css";
 import logo from '../assets/websitelogo.png'
+import DoctorAvailability from "../appointment-management/DoctorAvailability";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -82,7 +83,7 @@ export default function HomePage() {
           {/* Patient Role */}
           {loggedInPatient && (
             <>
-              {/* <Link to="/appointment-management">Book Appointment</Link> */}
+              <Link to="/doctor-availability">Doctor Availability</Link>
               <Link to="/appointment-details">View Appointments</Link>
             </>
           )}

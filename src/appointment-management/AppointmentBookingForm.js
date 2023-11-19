@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
 import AllHeader from "../AllHeader";
 import "./AppointmentBooking.css";
@@ -20,7 +20,8 @@ export default function AppointmentBookingForm({ doctors }) {
   const [appointmentInfo, setAppointmentInfo] = useState(null);
   //navigate function
   const navigate = useNavigate();
-  
+  const location = useLocation();
+  // const selectedDoctor = location.state?.selectedDoctor || null;
   const handleDoctorChange = (selectedDoctor) => {
     console.log("Selected Doctor:", selectedDoctor);
   
