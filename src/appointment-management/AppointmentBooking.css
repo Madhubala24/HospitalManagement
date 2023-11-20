@@ -16,7 +16,7 @@
   background-color: black;
   color: white;
   border-radius: 4px;
-  padding: 4px 8px; /* Adjust padding as needed */
+  padding: 4px 8px; 
   border: none;
   cursor: pointer;
   font-size: 14px;
@@ -75,7 +75,7 @@ select {
 
 .appointment-body {
   overflow: auto;
-  background-image: url('../../public/inside\ book.jpg');
+  background-image: url('../../src/assets/inside\ book.jpg');
   /* background-color: lightblue; */
   background-size: cover;
   background-position: center;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import Modal from "react-bootstrap/Modal";
-import AllHeader from "../AllHeader";
+import AllHeader from "../header.js/AllHeader";
 import "./AppointmentBooking.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
@@ -22,16 +22,18 @@ export default function AppointmentBookingForm({ doctors }) {
   const navigate = useNavigate();
   const location = useLocation();
   // const selectedDoctor = location.state?.selectedDoctor || null;
+
   const handleDoctorChange = (selectedDoctor) => {
     console.log("Selected Doctor:", selectedDoctor);
-  
+
     // Find the selected doctor's data
     const doctorData = doctors.find((doctor) => doctor.name === selectedDoctor);
-  
+
     // Update available days based on the selected doctor
     setAvailableDays(doctorData ? doctorData.availability : []);
     console.log("Available Days:", doctorData ? doctorData.availability : []);
   };
+  
   //handle for submission
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -96,13 +98,13 @@ export default function AppointmentBookingForm({ doctors }) {
     setSelectedTime("");
     setError("");
     setShowPopup(true); // show success popup
- // Set appointment information for displaying in the modal
- setAppointmentInfo({
-  patient: patientName,
-  doctor: selectedDoctor,
-  day: selectedDay,
-  time: selectedTime,
-});
+    // Set appointment information for displaying in the modal
+    setAppointmentInfo({
+      patient: patientName,
+      doctor: selectedDoctor,
+      day: selectedDay,
+      time: selectedTime,
+    });
     navigate("/appointment-management");
     //close popup aftr 3 seconds
     setTimeout(() => {
@@ -117,118 +119,115 @@ export default function AppointmentBookingForm({ doctors }) {
 
   return (
     <>
-    <AllHeader />
-    <div className="appointment-body">
-     
-      <div className="appointment-form-container">
-      <div className="back-button">
-      <button onClick={backtohome}>
-        <FontAwesomeIcon icon={faArrowLeft} /> Back
-      </button>
-    </div>
-        <h2>Book an Appointment</h2>
-        <form onSubmit={handleSubmit}>
-          {error && <p className="error-message">{error}</p>}
-          <div>
-            <strong>
-            <label>Patient Name:</label>
-            </strong>
-            <input
-              type="text"
-              value={patientName}
-              onChange={(e) => setPatientName(e.target.value)}
-              required
-            />
-            
+      <AllHeader />
+      <div className="appointment-body">
+        <div className="appointment-form-container">
+          <div className="back-button">
+            <button onClick={backtohome}>
+              <FontAwesomeIcon icon={faArrowLeft} /> Back
+            </button>
           </div>
+          <h2>Book an Appointment</h2>
+          <form onSubmit={handleSubmit}>
+            {error && <p className="error-message">{error}</p>}
+            <div>
+              <strong>
+                <label>Patient Name:</label>
+              </strong>
+              <input
+                type="text"
+                value={patientName}
+                onChange={(e) => setPatientName(e.target.value)}
+                required
+              />
+            </div>
 
-          <div>
-            <strong>
-              {" "}
-              <label>Select a Doctor:</label>
-            </strong>
-            <select
-              value={selectedDoctor}
-              onChange={(e) => setSelectedDoctor(e.target.value)}
-              required
-            >
-              <option value="" disabled>
-                Select Doctor
-              </option>
-              {doctors.map((doctor, index) => (
-                <option key={index} value={doctor.name}>
-                  {doctor.name}
+            <div>
+              <strong>
+                {" "}
+                <label>Select a Doctor:</label>
+              </strong>
+              <select
+                value={selectedDoctor}
+                onChange={(e) => setSelectedDoctor(e.target.value)}
+                required
+              >
+                <option value="" disabled>
+                  Select Doctor
                 </option>
-              ))}
-            </select>
-          </div>
+                {doctors.map((doctor, index) => (
+                  <option key={index} value={doctor.name}>
+                    {doctor.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-          <div>
-            <strong>
-              {" "}
-              <label>Select a Day:</label>
-            </strong>
-            <select
-              value={selectedDay}
-              onChange={(e) => setSelectedDay(e.target.value)}
-              required
-            >
-              <option value="" disabled>
-                Select Day
-              </option>
-              <option value="Monday">Monday</option>
-              <option value="Tuesday">Tuesday</option>
-              <option value="Wednesday">Wednesday</option>
-              <option value="Thursday">Thursday</option>
-              <option value="Friday">Friday</option>
-              <option value="Saturday">Saturday</option>
-              <option value="Sunday">Sunday</option>
-            </select>
-          </div>
-
-          <div>
-            <strong>
-              {" "}
-              <label>Select a Time:</label>{" "}
-            </strong>
-            <select
-              value={selectedTime}
-              onChange={(e) => setSelectedTime(e.target.value)}
-              required
-            >
-              <option value="" disabled>
-                Select Time
-              </option>
-              {timeSlots.map((time, index) => (
-                <option key={index} value={time}>
-                  {time}
+            <div>
+              <strong>
+                {" "}
+                <label>Select a Day:</label>
+              </strong>
+              <select
+                value={selectedDay}
+                onChange={(e) => setSelectedDay(e.target.value)}
+                required
+              >
+                <option value="" disabled>
+                  Select Day
                 </option>
-              ))}
-            </select>
-          </div>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+                <option value="Sunday">Sunday</option>
+              </select>
+            </div>
 
-          <button type="submit" className="submit">
-            Book Appointment
-          </button>
-        </form>
-     
-    <Modal show={showPopup} onHide={() => setShowPopup(false)}>
-      <Modal.Header closeButton>
-        <Modal.Title>Success</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <p>Your appointment was successfully booked!</p>
-        <p>
-          Patient Name: {appointmentInfo?.patient} <br />
-          Doctor: {appointmentInfo?.doctor} <br />
-          Day: {appointmentInfo?.day} <br />
-          Time: {appointmentInfo?.time}
-        </p>
-      </Modal.Body>
-    </Modal>
+            <div>
+              <strong>
+                {" "}
+                <label>Select a Time:</label>{" "}
+              </strong>
+              <select
+                value={selectedTime}
+                onChange={(e) => setSelectedTime(e.target.value)}
+                required
+              >
+                <option value="" disabled>
+                  Select Time
+                </option>
+                {timeSlots.map((time, index) => (
+                  <option key={index} value={time}>
+                    {time}
+                  </option>
+                ))}
+              </select>
+            </div>
 
+            <button type="submit" className="submit">
+              Book Appointment
+            </button>
+          </form>
+
+          <Modal show={showPopup} onHide={() => setShowPopup(false)}>
+            <Modal.Header closeButton>
+              <Modal.Title>Success</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              <p>Your appointment was successfully booked!</p>
+              <p>
+                Patient Name: {appointmentInfo?.patient} <br />
+                Doctor: {appointmentInfo?.doctor} <br />
+                Day: {appointmentInfo?.day} <br />
+                Time: {appointmentInfo?.time}
+              </p>
+            </Modal.Body>
+          </Modal>
+        </div>
       </div>
-    </div>
     </>
   );
 }
