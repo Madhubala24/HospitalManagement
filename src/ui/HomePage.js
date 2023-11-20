@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "./HomePage.css";
-import logo from '../assets/websitelogo.png'
+import logo from "../assets/websitelogo.png";
 import DoctorAvailability from "../appointment-management/DoctorAvailability";
 
 export default function HomePage() {
@@ -11,7 +11,7 @@ export default function HomePage() {
   const isLoggedIn = localStorage.getItem("isLoggedIn");
   const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInDoctor"));
   const loggedInPatient = JSON.parse(localStorage.getItem("loggedInPatient"));
-  const loggedInAdmin = JSON.parse(localStorage.getItem("loggedInAdmin")); 
+  const loggedInAdmin = JSON.parse(localStorage.getItem("loggedInAdmin"));
 
   const handleLogout = () => {
     //Clear logged-in status and details
@@ -27,9 +27,18 @@ export default function HomePage() {
     return (
       <div>
         <h2>Welcome, Dr. {loggedInDoctor.doctorusername}!</h2>
-        <p className="tick-mark"> Manage your appointments and stay connected with your patients</p>
-        <p className="tick-mark"> Utilize our advanced tools for diagnosis and treatment planning</p>
-        <p className="tick-mark"> Ensure the best healthcare outcomes for your patients</p>
+        <p className="tick-mark">
+          {" "}
+          Manage your appointments and stay connected with your patients
+        </p>
+        <p className="tick-mark">
+          {" "}
+          Utilize our advanced tools for diagnosis and treatment planning
+        </p>
+        <p className="tick-mark">
+          {" "}
+          Ensure the best healthcare outcomes for your patients
+        </p>
       </div>
     );
   };
@@ -39,9 +48,19 @@ export default function HomePage() {
     return (
       <div>
         <h2>Welcome, {loggedInPatient.username}!</h2>
-        <p className="tick-mark"> Book your appointments and manage your healthcare journey with ease</p>
-        <p className="tick-mark"> Access your medical records and stay informed about your health</p>
-        <p className="tick-mark"> Experience personalized care and attention from our healthcare professionals</p>
+        <p className="tick-mark">
+          {" "}
+          Book your appointments and manage your healthcare journey with ease
+        </p>
+        <p className="tick-mark">
+          {" "}
+          Access your medical records and stay informed about your health
+        </p>
+        <p className="tick-mark">
+          {" "}
+          Experience personalized care and attention from our healthcare
+          professionals
+        </p>
       </div>
     );
   };
@@ -51,30 +70,37 @@ export default function HomePage() {
     return (
       <div>
         <h2>Welcome, Administrator!</h2>
-        <p className="tick-mark">Streamline hospital operations with our comprehensive management system</p>
-        <p className="tick-mark">Monitor and optimize resource allocation for efficient healthcare delivery</p>
-        <p className="tick-mark">Ensure compliance with healthcare standards and regulations</p>
+        <p className="tick-mark">
+          Streamline hospital operations with our comprehensive management
+          system
+        </p>
+        <p className="tick-mark">
+          Monitor and optimize resource allocation for efficient healthcare
+          delivery
+        </p>
+        <p className="tick-mark">
+          Ensure compliance with healthcare standards and regulations
+        </p>
       </div>
     );
   };
   return (
     <div className="home-body">
       <header className="header">
-        <div className="leftlogo"> 
-        <div className="logo">
-        <img src={logo} alt="HMS Logo" />
-        </div>
-        <div className="heading">
-        <strong>
-          <h1>HMS</h1>
-        </strong>
-        </div>
+        <div className="leftlogo">
+          <div className="logo">
+            <img src={logo} alt="HMS Logo" />
+          </div>
+          <div className="heading">
+            <strong>
+              <h1>HMS</h1>
+            </strong>
+          </div>
         </div>
         <div className="nav-buttons">
           {/* Doctor Role */}
           {loggedInDoctor && (
             <div className="logout">
-            
               <Link to="/doctor-management">Doctor Management</Link>
               {/* <Link to="/appointment-details">View Appointments</Link> */}
             </div>
@@ -97,18 +123,18 @@ export default function HomePage() {
             </>
           )}
         </div>
-      
+
         <div className="logout" onClick={handleLogout}>
-  <FontAwesomeIcon icon={faSignOutAlt} />
-  Logout
-</div>
+          <FontAwesomeIcon icon={faSignOutAlt} />
+          Logout
+        </div>
       </header>
       <div className="center-content">
-      {loggedInDoctor && getDoctorContent()}
+        {loggedInDoctor && getDoctorContent()}
         {loggedInPatient && getPatientContent()}
         {loggedInAdmin && getAdminContent()}
-         {/* Conditional button based on user role */}
-         {loggedInDoctor && (
+        {/* Conditional button based on user role */}
+        {loggedInDoctor && (
           <div className="button-container">
             <Link to="/appointment-details">
               <button className="button">View Appointments</button>
@@ -130,7 +156,6 @@ export default function HomePage() {
           </div>
         )}
       </div>
-      </div>
- 
+    </div>
   );
 }

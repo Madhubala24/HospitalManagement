@@ -1,6 +1,6 @@
 .appointment-details-container {
   position: relative;
-  margin-top: 100px;  
+  margin-top: 50px;  
   bottom: auto;
   z-index: 1;
   border-radius: 3px;
@@ -21,14 +21,15 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
-  bottom: auto;
-  z-index: 2;
+  margin-right: 500px;
+  
+  /* z-index: 2; */
   border: 1px solid #282828; /* Increased border width to make it bold */
 }
 
 .appointment-table th, .appointment-table td {
   border: 1px solid #040404; /* Increased border width to make it bold */
-  padding: 15px;
+  /* padding: 1px; */
   text-align: left;
 }
 
@@ -38,12 +39,10 @@
 
 .appointmentview-body {
    overflow: auto;
-  /* margin-top: 80px; */ 
-  /* background-image: url('../../public/Appointment_Schedule.png'); */
   background-color: rgb(184, 213, 242);
   background-size: cover;
   background-position: center;
-  background-size: 100% 100%;
+  background-size: 150% 150%;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -51,8 +50,6 @@
 }
 
 .appointment-details-container h2 {
-  /* margin-top: 420px; */
-  /* margin: auto; */
   margin-top: 10px;
   color: rgb(36, 36, 77);
 }

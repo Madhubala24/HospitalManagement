@@ -61,7 +61,7 @@
 .register-body {
   overflow: auto;
   margin-top: 80px;
-   background-image: url('../../public/regbg.jpg');
+   background-image: url('../../src/assets/regbg.jpg');
   background-size: cover;
   background-position: center;
   background-size: 100% 100%;

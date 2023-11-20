@@ -1,6 +1,6 @@
 .home-body {
   overflow: auto;
-  background-image: url('../../public/bg.jpeg');
+  background-image: url('../../src/assets/bg.jpeg');
   background-size: cover;
   background-position: center;
   background-size: 100% 100%;

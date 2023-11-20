@@ -15,8 +15,6 @@
     width: 100%; /* Set the width to 100% */
     border-collapse: collapse;
     margin-top: 30px;
-    /* Remove the following line to prevent unnecessary width settings */
-    /* width: 200%; */
     height: 250px;
     border: 1px solid #282828;
     overflow-y: auto; 
@@ -53,7 +51,6 @@
     background-color: #0056b3;
   }
   
-  /* Modal styles */
   .modal {
     display: flex;
     align-items: center;
@@ -100,8 +97,6 @@
   
   .doctoravailability-body {
     overflow: auto;
-   /* margin-top: 80px; */ 
-   /* background-image: url('../../public/Appointment_Schedule.png'); */
    background-color: rgb(184, 213, 242);
    background-size: cover;
    background-position: center;
