@@ -10,25 +10,40 @@ export default function RegistrationForm() {
   // Initialize necessary state variables
   const navigate = useNavigate();
   const [showPopup, setShowPopup] = useState(false);
-
+  const [selectedDays, setSelectedDays] = useState([]);
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
   // Form data state
+
   const [formData, setFormData] = useState({
     name: "",
     gender: "Male",
     department: "",
     experience: "",
-    availability: "Monday",
+    availability: [],
     fromTime: "09:00",
     toTime: "20:00",
     emergencyNumber: "",
   });
-
+  // const selectedDaysString = formData.availability.join(", ");
   // Handle form input changes
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    //   const numericPattern = /^[0-9]*$/;
-    //  if(numericPattern.test(value)){
-    setFormData({ ...formData, [name]: value });
+    const { name, value, checked } = e.target;
+    if (name === "availability") {
+      let updatedSelectedDays;
+
+      if (checked) {
+        // If the day is checked, add it to the selected days
+        updatedSelectedDays = [...selectedDays, value];
+      } else {
+        // If the day is unchecked, remove it from the selected days
+        updatedSelectedDays = selectedDays.filter((day) => day !== value);
+      }
+
+      setSelectedDays(updatedSelectedDays);
+      setFormData({ ...formData, [name]: updatedSelectedDays });
+    } else {
+      setFormData({ ...formData, [name]: value });
+    }
   };
 
   // Handle form submit
@@ -53,7 +68,7 @@ export default function RegistrationForm() {
       gender: "Male",
       department: "",
       experience: "",
-      availability: "Monday",
+      availability: [],
       fromTime: "09:00",
       toTime: "20:00",
       emergencyNumber: "",
@@ -62,6 +77,7 @@ export default function RegistrationForm() {
     // Hide success popup after 5 seconds
     setTimeout(() => {
       setShowPopup(false);
+      navigate("/doctor-management");
     }, 3000);
   };
 
@@ -79,7 +95,7 @@ export default function RegistrationForm() {
           <div className="back-button">
             <button onClick={backtodoctor}>
               <FontAwesomeIcon icon={faArrowLeft} />
-              Back{" "}
+              Back
             </button>
           </div>
           <form onSubmit={handleSubmit}>
@@ -136,7 +152,7 @@ export default function RegistrationForm() {
 
             <div className="form-element">
               <label htmlFor="department" className="label">
-                Department:
+              Specialist:
               </label>
               <input
                 type="text"
@@ -165,28 +181,27 @@ export default function RegistrationForm() {
               />
             </div>
 
-            <div className="form-element">
+            <div>
               <label htmlFor="availability" className="label">
                 Availability:
               </label>
-              <select
-                id="availability"
-                name="availability"
-                value={formData.availability}
-                onChange={handleChange}
-                className="input"
-                required
-              >
-                <option value="Monday">Monday</option>
-                <option value="Tuesday">Tuesday</option>
-                <option value="Wednesday">Wednesday</option>
-                <option value="Thursday">Thursday</option>
-                <option value="Friday">Friday</option>
-                <option value="Saturday">Saturday</option>
-                <option value="Sunday">Sunday</option>
-              </select>
+              {daysOfWeek.map((day) => (
+                <div key={day} >
+                  <input
+                    type="checkbox"
+                    id={day}
+                    name="availability"
+                    value={day}
+                    checked={selectedDays.includes(day)}
+                    onChange={handleChange}
+                  />
+                  <label htmlFor={day}>{day}</label>
+                </div>
+              ))}
             </div>
-
+            <div className="form-element">
+              <p className="selected-days">Selected Days: {selectedDays.join(", ")}</p>
+            </div>
             <div className="form-element">
               <label htmlFor="fromTime" className="label">
                 From:
@@ -213,7 +228,7 @@ export default function RegistrationForm() {
                 required
               />
             </div>
-            {/* 
+            
           <div className="form-element">
             <label htmlFor="emergencyNumber" className="label">
               Emergency Number:
@@ -228,7 +243,7 @@ export default function RegistrationForm() {
               required
               pattern="[0-9]*"
             />
-          </div> */}
+          </div>
 
             <div className="form-element">
               <input type="submit" value="Submit" className="submit-button" />

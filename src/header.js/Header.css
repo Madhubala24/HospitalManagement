@@ -12,9 +12,19 @@
   text-decoration: none; 
 }
 
+.logout {
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.logout svg {
+  margin-right: 6px; /* Adjust the space between the icon and text */
+}
+
 .leftlogo {
   display: flex;
-  align-items: center; /* Align items vertically in the center */
+  align-items: center; 
 }
 
 .logo {
@@ -25,6 +35,10 @@
  color: rgb(239, 173, 66);
   margin-left: 2px; /* Adjust the space between the logo and heading */
 }
+.logout {
+  margin-left: 10px;
+}
+
 
 .header {
   display: flex;

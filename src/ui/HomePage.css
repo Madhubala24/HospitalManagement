@@ -28,11 +28,13 @@
 
 .nav-buttons {
   display: flex;
- margin-left: 55%;
+  margin-left: 700px;
+  transition: box-shadow 0.3s;
 }
 
 .logout {
   cursor: pointer;
+  margin-right: 10px;
 }
 
 .center-content {
@@ -131,16 +133,31 @@
 }
 
 .nav-buttons a {
-  text-decoration: none; 
-  color: rgb(237, 233, 233); 
-  margin-right: 20px; 
+  text-decoration: none;
+  color: rgb(237, 233, 233);
+  margin-right: 15px;
+  
+}
+/* .nav-buttons {
+  text-decoration: none;
+  color: rgb(237, 233, 233);
+  margin-right: 80px;
+  
+} */
+.admin {
+   margin-right: 100%;
+  display: flex;
+  justify-content: space-around;
 }
 
-.nav-buttons a:hover {
-  text-decoration: none; 
-  color: #fff; 
-}
 
+/* .nav-buttons a:hover {
+  text-decoration: none;
+  color: #fff;
+} */
+/* .nav-buttons:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); 
+} */
 .tick-mark {
   color: #101010; 
 }

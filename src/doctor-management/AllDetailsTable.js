@@ -12,7 +12,7 @@ export default function AllDetailsTable({ onDelete }) {
   const doctorData = JSON.parse(localStorage.getItem("doctorData") || "[]");
   const [deleteIndex, setDeleteIndex] = useState(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
-const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInDoctor"));
+  // const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInDoctor"));
 
   // Handle click event to trigger delete confirmation modal
   const handleDeleteClick = (index) => {
@@ -59,7 +59,7 @@ const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInDoctor"));
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Experience</th>
-                <th>Department</th>
+                <th>Specialist</th>
                 <th>Availability</th>
                 <th>Edit</th>
                 <th>Delete</th>
@@ -73,7 +73,8 @@ const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInDoctor"));
                   <td>{data.gender}</td>
                   <td>{data.experience}</td>
                   <td>{data.department}</td>
-                  <td>{data.availability}</td>
+                  <td>{data.availability.join(", ")}</td>
+
                   <td>
                     {/* Link to navigate to edit page */}
                     <Link to={`/edit/${index}`} className="edit-button">
@@ -94,7 +95,7 @@ const loggedInDoctor = JSON.parse(localStorage.getItem("loggedInDoctor"));
             </tbody>
           </table>
         ) : (
-          <p>No projects found. You can create new projects to proceed.</p>
+          <p>No Doctors found. You can add Register to proceed.</p>
         )}
         {/* Modal for delete confirmation */}
         <Modal show={showConfirmation} onHide={cancelDelete}>

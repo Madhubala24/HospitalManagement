@@ -11,8 +11,8 @@ import EditForm from "./doctor-management/EditForm";
 import "bootstrap/dist/css/bootstrap.min.css";
 import LoginPage from "./login/LoginPage";
 import HomePage from "./ui/HomePage";
-import AppointmentBookingForm from "./appointment-management/AppointmentBookingForm";
-import AppointmentDetails from "./appointment-management/AppointmentDetails";
+import AppointmentBookingForm from "./appointment-management/AppointmentBookingFormCopy";
+import AppointmentDetails from "./appointment-management/AppointmentDetails";   
 import DoctorAvailability from "./appointment-management/DoctorAvailability";
 
 function App() {
@@ -103,7 +103,7 @@ function App() {
               path="/appointment-management"
               element={<AppointmentBookingForm doctors={doctors} />}
             />
-             <Route
+            <Route
               path="/doctor-availability"
               element={<DoctorAvailability doctors={doctors} />}
             />

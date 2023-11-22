@@ -17,7 +17,7 @@
 
 .back-button {
   margin-top: 75px;
-  background-color: black;
+  /* background-color: black; */
   color: white;
   border-radius: 4px;
   padding: 4px 8px; /* Adjust padding as needed */
@@ -91,7 +91,7 @@
 position: relative;
   overflow: auto;
   /* background-image: url('../../public/cimage.jpg'); */
-  background-color: rgb(188, 211, 247);
+  background-color: rgb(220, 229, 244);
   background-size: cover;
   background-position: center;
   background-size: 100% 100%;

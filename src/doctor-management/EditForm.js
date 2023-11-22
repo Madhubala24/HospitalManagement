@@ -104,7 +104,7 @@ export default function EditForm() {
 
             <div className="form-element">
               <label htmlFor="department" className="label">
-                Department:
+              Specialist:
               </label>
               <input
                 type="text"
@@ -150,6 +150,8 @@ export default function EditForm() {
                 <option value="Wednesday">Wednesday</option>
                 <option value="Thursday">Thursday</option>
                 <option value="Friday">Friday</option>
+                <option value="Friday">Saturday</option>
+                <option value="Friday">Sunday</option>
               </select>
             </div>
             <div className="form-element">

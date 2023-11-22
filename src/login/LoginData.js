@@ -8,7 +8,7 @@ const doctorData = [
     password: "Welcome",
   },
   {
-    doctorusername: "anderson",
+    doctorusername: "Madhu",
     password: "Welcome",
   },
   {

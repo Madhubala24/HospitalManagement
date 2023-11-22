@@ -78,7 +78,7 @@ export default function AppointmentDetails() {
   return (
     <>
       <AllHeader />
-<br />
+      <br />
 
       <div className="appointmentview-body">
         <div className="back-button">

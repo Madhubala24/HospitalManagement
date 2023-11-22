@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import "./HomePage.css";
 import logo from "../assets/websitelogo.png";
-import DoctorAvailability from "../appointment-management/DoctorAvailability";
 
 export default function HomePage() {
   const navigate = useNavigate();
@@ -28,15 +27,12 @@ export default function HomePage() {
       <div>
         <h2>Welcome, Dr. {loggedInDoctor.doctorusername}!</h2>
         <p className="tick-mark">
-          {" "}
           Manage your appointments and stay connected with your patients
         </p>
         <p className="tick-mark">
-          {" "}
           Utilize our advanced tools for diagnosis and treatment planning
         </p>
         <p className="tick-mark">
-          {" "}
           Ensure the best healthcare outcomes for your patients
         </p>
       </div>
@@ -97,33 +93,38 @@ export default function HomePage() {
             </strong>
           </div>
         </div>
+        <div>
         <div className="nav-buttons">
           {/* Doctor Role */}
           {loggedInDoctor && (
             <div className="logout">
-              <Link to="/doctor-management">Doctor Management</Link>
+              {/* <Link to="/doctor-management">Doctor Management</Link> */}
               {/* <Link to="/appointment-details">View Appointments</Link> */}
             </div>
           )}
-
+</div>
+<div className="nav-buttons">
           {/* Patient Role */}
           {loggedInPatient && (
             <>
-              <Link to="/doctor-availability">Doctor Availability</Link>
+              {/* <Link to="/doctor-availability">Doctor Availability</Link> */}
               <Link to="/appointment-details">View Appointments</Link>
             </>
           )}
+</div>
+<div className="nav-buttons">
 
           {/* Admin Role */}
           {loggedInAdmin && (
             <>
-              <Link to="/appointment-details">View Appointments</Link>
-              <Link to="/doctor-management">Doctor Management</Link>
-              <Link to="/appointment-management">Appointment Management</Link>
+             <Link to="/appointment-details">View Appointments</Link> 
+            <Link to="/doctor-management">Doctor Management</Link> 
+              {/* <Link to="/appointment-management">Appointment Management</Link>  */}
             </>
           )}
         </div>
-
+          
+</div>
         <div className="logout" onClick={handleLogout}>
           <FontAwesomeIcon icon={faSignOutAlt} />
           Logout
@@ -144,7 +145,7 @@ export default function HomePage() {
 
         {loggedInPatient && (
           <div className="button-container">
-            <Link to="/appointment-management">
+            <Link to="/doctor-availability">
               <button className="button">Book Appointment</button>
             </Link>
           </div>

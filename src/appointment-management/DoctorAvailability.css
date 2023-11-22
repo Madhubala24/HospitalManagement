@@ -11,6 +11,16 @@
     margin-bottom: 10px;
   }
   
+  .back-button {
+    left: 2px;
+   /* background-color: rgb(223, 235, 247); */
+    border-radius: 4px;
+    padding: 4px 8px; /* Adjust padding as needed */
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+   
+  }
   .doctor-table {
     width: 100%; /* Set the width to 100% */
     border-collapse: collapse;
@@ -19,6 +29,7 @@
     border: 1px solid #282828;
     overflow-y: auto; 
     background-color: white;
+    margin-right: 800px;
   }
   
   .doctor-table th, .doctor-table td {
@@ -28,20 +39,20 @@
   }
   
   .doctor-table th {
-    background-color: #e8e0e0;
+    background-color: #aeacac;
   }
   
   .doctor-table tbody tr:nth-child(even) {
-    background-color: #b1afaf;
+    background-color: #f1eaea;
   }
   .doctor-table tbody tr:nth-child(odd) {
-    background-color: #c1bdbd;
+    background-color: #e6dfdf;
   }
   
   .doctor-table button {
     padding: 5px 10px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #898484;
     color: #0e0d0d;
     border: none;
     border-radius: 3px;
@@ -97,7 +108,7 @@
   
   .doctoravailability-body {
     overflow: auto;
-   background-color: rgb(184, 213, 242);
+   background-color: rgb(223, 235, 247);
    background-size: cover;
    background-position: center;
    background-size: 100% 100%;

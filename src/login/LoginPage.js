@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import "./login.css";
+import FacebookLogin from 'react-facebook-login';
+
 
 export default function LoginPage({ onLogin }) {
-  //onlogin func pass from app.js
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [userData, setUserData] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -64,14 +66,19 @@ export default function LoginPage({ onLogin }) {
     }
   };
 
+  const responseFacebook = (response) => {
+    console.log(response);
+    // Handle the Facebook login response, such as sending the user data to your server for signup
+    setUserData(response);
+  };
+
   return (
     <div className="login-body">
       <div className="login-container">
-      
+        <h2>Welcome !</h2>
         <form className="login-form">
           <div className="input-group">
             <label className="input-label">Username</label>
-
             <input
               className="input-field"
               type="text"
@@ -95,6 +102,15 @@ export default function LoginPage({ onLogin }) {
               />
             </div>
           </div>
+          
+          {/* Facebook Login */}
+          <FacebookLogin
+            appId="988627616128929"
+            autoLoad={false}
+            fields="name,email,picture"
+            callback={responseFacebook}
+          />
+
           <button className="login-button" type="button" onClick={handleLogin}>
             Login
           </button>
